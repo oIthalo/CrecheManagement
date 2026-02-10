@@ -2,5 +2,4 @@
   <Project Path="CrecheManagement.API/CrecheManagement.API.csproj" />
   <Project Path="CrecheManagement.Domain/CrecheManagement.Domain.csproj" />
   <Project Path="CrecheManagement.Infrastructure/CrecheManagement.Infrastructure.csproj" />
-  <Project Path="CrecheManagement.Test/CrecheManagement.Test.csproj" />
 </Solution>
