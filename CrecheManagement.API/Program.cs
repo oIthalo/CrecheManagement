@@ -1,23 +1,53 @@
 using CrecheManagement.API.Handlers;
+using CrecheManagement.API.Providers;
 using CrecheManagement.Domain.Commands.Creche;
 using CrecheManagement.Domain.HttpClient.CNPJ;
 using CrecheManagement.Domain.Interfaces.Encrypter;
+using CrecheManagement.Domain.Interfaces.Providers;
 using CrecheManagement.Domain.Interfaces.Repositories;
 using CrecheManagement.Domain.Interfaces.Services;
 using CrecheManagement.Infrastructure.Context;
 using CrecheManagement.Infrastructure.Repositories;
 using CrecheManagement.Infrastructure.Security;
+using Microsoft.OpenApi.Models;
 using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opts =>
+{
+    opts.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Insira o token JWT no formato: {seu_token}",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    });
+
+    opts.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddMvc(x => x.Filters.Add(typeof(ExceptionsFilter)));
 builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(RegisterCrecheCommand).Assembly));
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddTransient<CustomCNPJRefitHandler>();
 builder.Services
@@ -32,6 +62,8 @@ builder.Services
 builder.Services.AddSingleton<MongoContext>();
 builder.Services.AddSingleton<ITextEncrypter, BCryptNet>();
 builder.Services.AddSingleton<ITokensService, TokensService>();
+builder.Services.AddSingleton<ITokenProvider, TokenProvider>();
+builder.Services.AddSingleton<ILoggedUserService, LoggedUserService>();
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<ICrechesRepository, CrechesRepository>();

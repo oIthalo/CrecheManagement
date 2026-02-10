@@ -1,4 +1,5 @@
-﻿using CrecheManagement.Domain.Commands.Auth;
+﻿using CrecheManagement.API.Attributes;
+using CrecheManagement.Domain.Commands.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost]
+    [IsAuthenticated]
     [Route("refresh")]
     public async Task<IActionResult> RefreshToken([FromQuery] string token)
     {
