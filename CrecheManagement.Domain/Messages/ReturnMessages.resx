@@ -189,4 +189,13 @@
   <data name="USER_LOGGED_SUCCESSFULLY" xml:space="preserve">
     <value>User logged successfully.</value>
   </data>
+  <data name="INVALID_REFRESH_TOKEN" xml:space="preserve">
+    <value>Refresh token is invalid or expired.</value>
+  </data>
+  <data name="REFRESH_TOKEN_EXPIRED" xml:space="preserve">
+    <value>Refresh token expired.</value>
+  </data>
+  <data name="REFRESH_TOKEN_GENERATED_SUCCESSFULLY" xml:space="preserve">
+    <value>Refresh token generated successfully.</value>
+  </data>
 </root>

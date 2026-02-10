@@ -10,12 +10,14 @@ using CrecheManagement.Domain.Models;
 using CrecheManagement.Domain.Responses.Auth;
 using CrecheManagement.Domain.Utils;
 using MediatR;
+using MongoDB.Driver.Linq;
 
 namespace CrecheManagement.Domain.Handlers.Commands.Auth;
 
 public class AuthUserCommandHandler : 
     IRequestHandler<RegisterUserCommand, BaseResponse<UserResponse>>,
-    IRequestHandler<LoginUserCommand, BaseResponse<UserResponse>>
+    IRequestHandler<LoginUserCommand, BaseResponse<UserResponse>>,
+    IRequestHandler<RefreshTokenCommand, BaseResponse<TokensDto>>
 {
     private readonly IUsersRepository _usersRepository;
     private readonly ITextEncrypter _textEncrypter;
@@ -77,9 +79,33 @@ public class AuthUserCommandHandler :
 
         return new BaseResponse<UserResponse>()
         {
-            StatusCode = HttpStatusCode.Created,
+            StatusCode = HttpStatusCode.OK,
             Message = ReturnMessages.USER_LOGGED_SUCCESSFULLY,
             Data = new UserResponse(user.Username, user.Email, tokens)
+        };
+    }
+
+    public async Task<BaseResponse<TokensDto>> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
+    {
+        var user = await _usersRepository.GetByRefreshTokenAsync(request.RefreshToken)
+            ?? throw new CrecheManagementException(ReturnMessages.INVALID_REFRESH_TOKEN, HttpStatusCode.Unauthorized);
+
+        if (user.LoginDate.AddDays(7) < DateTime.Now)
+            throw new CrecheManagementException(ReturnMessages.REFRESH_TOKEN_EXPIRED, HttpStatusCode.Unauthorized);
+        else if (!user.KeepAlive && user.LoginDate.AddHours(8) < DateTime.Now)
+            throw new CrecheManagementException(ReturnMessages.REFRESH_TOKEN_EXPIRED, HttpStatusCode.Unauthorized);
+
+        var tokens = GenerateTokens(user.Identifier);
+
+        user.RefreshToken = tokens.RefreshToken;
+
+        await _usersRepository.UpsertAsync(user);
+
+        return new BaseResponse<TokensDto>()
+        {
+            StatusCode = HttpStatusCode.OK,
+            Message = ReturnMessages.REFRESH_TOKEN_GENERATED_SUCCESSFULLY,
+            Data = tokens
         };
     }
 
