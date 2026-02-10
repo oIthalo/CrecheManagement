@@ -6,7 +6,6 @@ namespace CrecheManagement.Domain.Models;
 public abstract class BaseModel
 {
     [BsonId]
-    [BsonIgnoreIfNull]
     [BsonRepresentation(BsonType.ObjectId)]
     public ObjectId Id { get; set; }
     public string Identifier { get; set; }

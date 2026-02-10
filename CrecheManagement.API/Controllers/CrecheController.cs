@@ -1,4 +1,5 @@
-﻿using CrecheManagement.Domain.Commands.Creche;
+﻿using CrecheManagement.API.Attributes;
+using CrecheManagement.Domain.Commands.Creche;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ public class CrecheController : ControllerBase
     }
 
     [HttpPost]
+    [IsAuthenticated]
     public async Task<IActionResult> Create([FromBody] RegisterCrecheCommand command)
     {
         var result = await _mediator.Send(command);

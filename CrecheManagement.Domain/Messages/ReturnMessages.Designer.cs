@@ -133,6 +133,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authorization token missing..
+        /// </summary>
+        public static string AUTHORIZATION_MISSING {
+            get {
+                return ResourceManager.GetString("AUTHORIZATION_MISSING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CNPJ is not valid..
         /// </summary>
         public static string CNPJ_INVALID {

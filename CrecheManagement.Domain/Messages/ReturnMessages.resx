@@ -198,4 +198,7 @@
   <data name="REFRESH_TOKEN_GENERATED_SUCCESSFULLY" xml:space="preserve">
     <value>Refresh token generated successfully.</value>
   </data>
+  <data name="AUTHORIZATION_MISSING" xml:space="preserve">
+    <value>Authorization token missing.</value>
+  </data>
 </root>

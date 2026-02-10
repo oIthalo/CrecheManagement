@@ -10,8 +10,6 @@ COPY . .
 
 WORKDIR /app/CrecheManagement.API
 RUN dotnet restore
-
-WORKDIR /app/CrecheManagement.API
 RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
