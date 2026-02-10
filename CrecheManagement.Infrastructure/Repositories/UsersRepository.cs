@@ -26,6 +26,12 @@ public class UsersRepository : IUsersRepository
         return await _mongo.Users.Find(filter).FirstOrDefaultAsync();
     }
 
+    public async Task<User?> GetByRefreshTokenAsync(string refreshToken)
+    {
+        var filter = Builders<User>.Filter.Eq(x => x.RefreshToken, refreshToken);
+        return await _mongo.Users.Find(filter).FirstOrDefaultAsync();
+    }
+
     public async Task<bool> ExistWithEmailAsync(string email)
     {
         var filter = Builders<User>.Filter.Eq(x => x.Email, email);

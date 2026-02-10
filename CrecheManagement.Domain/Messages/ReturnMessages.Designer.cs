@@ -214,6 +214,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh token is invalid or expired..
+        /// </summary>
+        public static string INVALID_REFRESH_TOKEN {
+            get {
+                return ResourceManager.GetString("INVALID_REFRESH_TOKEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keep connected required..
         /// </summary>
         public static string KEEPALIVE_REQUIRED {
@@ -246,6 +255,24 @@ namespace CrecheManagement.Domain.Messages {
         public static string PASSWORD_REQUIRED {
             get {
                 return ResourceManager.GetString("PASSWORD_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh token expired..
+        /// </summary>
+        public static string REFRESH_TOKEN_EXPIRED {
+            get {
+                return ResourceManager.GetString("REFRESH_TOKEN_EXPIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh token generated successfully..
+        /// </summary>
+        public static string REFRESH_TOKEN_GENERATED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("REFRESH_TOKEN_GENERATED_SUCCESSFULLY", resourceCulture);
             }
         }
         
