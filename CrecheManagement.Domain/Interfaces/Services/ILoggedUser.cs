@@ -2,7 +2,7 @@
 
 namespace CrecheManagement.Domain.Interfaces.Services;
 
-public interface ILoggedUserService
+public interface ILoggedUser
 {
-    Task<User> GetUser();
+    Task<User> GetUserAsync();
 }

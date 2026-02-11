@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace CrecheManagement.Infrastructure.Security;
 
-public class LoggedUserService : ILoggedUserService
+public class LoggedUserService : ILoggedUser
 {
     private readonly ITokenProvider _tokenProvider;
     private readonly ITokensService _tokensService;
@@ -25,7 +25,7 @@ public class LoggedUserService : ILoggedUserService
         _mongo = mongo;
     }
 
-    public async Task<User> GetUser()
+    public async Task<User> GetUserAsync()
     {
         var token = _tokenProvider.GetToken();
         var identifier = _tokensService.ValidateTokenAndGetUserIdentifier(token);

@@ -201,4 +201,22 @@
   <data name="AUTHORIZATION_MISSING" xml:space="preserve">
     <value>Authorization token missing.</value>
   </data>
+  <data name="ADDRESS_ZIP_INVALID" xml:space="preserve">
+    <value>Address zip code is invalid.</value>
+  </data>
+  <data name="CONTACT_NUMBER_INVALID" xml:space="preserve">
+    <value>Contact number invalid. (XX) X XXXX-XXXX</value>
+  </data>
+  <data name="ALREADY_EXIST_CRECHE_WITH_EMAIL" xml:space="preserve">
+    <value>Already exist a creche with this email.</value>
+  </data>
+  <data name="CRECHE_NOT_FOUND" xml:space="preserve">
+    <value>Creche not found.</value>
+  </data>
+  <data name="CRECHE_UPDATED_SUCCESSFULLY" xml:space="preserve">
+    <value>Creche updated successfully.</value>
+  </data>
+  <data name="CRECHES_RETURNED_SUCESSFULLY" xml:space="preserve">
+    <value>Creches returned successfully.</value>
+  </data>
 </root>

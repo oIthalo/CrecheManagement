@@ -115,6 +115,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address zip code is invalid..
+        /// </summary>
+        public static string ADDRESS_ZIP_INVALID {
+            get {
+                return ResourceManager.GetString("ADDRESS_ZIP_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address zipcode is required..
         /// </summary>
         public static string ADDRESS_ZIP_REQUIRED {
@@ -129,6 +138,15 @@ namespace CrecheManagement.Domain.Messages {
         public static string ALREADY_EXIST_CRECHE_WITH_CNPJ {
             get {
                 return ResourceManager.GetString("ALREADY_EXIST_CRECHE_WITH_CNPJ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already exist a creche with this email..
+        /// </summary>
+        public static string ALREADY_EXIST_CRECHE_WITH_EMAIL {
+            get {
+                return ResourceManager.GetString("ALREADY_EXIST_CRECHE_WITH_EMAIL", resourceCulture);
             }
         }
         
@@ -160,11 +178,47 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact number invalid. (XX) X XXXX-XXXX.
+        /// </summary>
+        public static string CONTACT_NUMBER_INVALID {
+            get {
+                return ResourceManager.GetString("CONTACT_NUMBER_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creche not found..
+        /// </summary>
+        public static string CRECHE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CRECHE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creche registered successfully..
         /// </summary>
         public static string CRECHE_REGISTERED_SUCCESSFULLY {
             get {
                 return ResourceManager.GetString("CRECHE_REGISTERED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creche updated successfully..
+        /// </summary>
+        public static string CRECHE_UPDATED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("CRECHE_UPDATED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creches returned successfully..
+        /// </summary>
+        public static string CRECHES_RETURNED_SUCESSFULLY {
+            get {
+                return ResourceManager.GetString("CRECHES_RETURNED_SUCESSFULLY", resourceCulture);
             }
         }
         

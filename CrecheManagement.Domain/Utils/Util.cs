@@ -44,4 +44,19 @@ public static class Util
     {
         return Regex.IsMatch(input, @"^\d{5}-?\d{3}$");
     }
+
+    public static bool IsPhoneNumber(string input)
+    {
+        input = KeepLettersAndNumbers(input);
+
+        return Regex.IsMatch(input, @"^\d{2}9\d{8}$");
+    }
+
+    public static string KeepLettersAndNumbers(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        return Regex.Replace(input, @"[^a-zA-Z0-9]", "");
+    }
 }

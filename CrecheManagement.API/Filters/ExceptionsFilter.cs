@@ -11,6 +11,8 @@ public class ExceptionsFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
+        Console.WriteLine(context.Exception);
+
         if (context.Exception is CrecheManagementException crecheException)
         {
             context.HttpContext.Response.StatusCode = (int)crecheException.StatusCode;
