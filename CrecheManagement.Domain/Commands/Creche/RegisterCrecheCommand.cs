@@ -5,10 +5,11 @@ using MediatR;
 
 namespace CrecheManagement.Domain.Commands.Creche;
 
-public class RegisterCrecheCommand : IRequest<BaseResponse<CrecheResponse>>
+public class RegisterCrecheCommand : IRequest<BaseResponse<CreatedCrecheResponse>>
 {
     public string CNPJ { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
+    public string ContactNumber { get; set; }
     public Address Address { get; set; }
 }

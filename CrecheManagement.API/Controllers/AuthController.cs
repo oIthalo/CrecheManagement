@@ -35,7 +35,7 @@ public class AuthController : ControllerBase
     [HttpPost]
     [IsAuthenticated]
     [Route("refresh")]
-    public async Task<IActionResult> RefreshToken([FromQuery] string token)
+    public async Task<IActionResult> Refresh([FromQuery] string token)
     {
         var result = await _mediator.Send(new RefreshTokenCommand { RefreshToken = token });
         return Ok(result);
