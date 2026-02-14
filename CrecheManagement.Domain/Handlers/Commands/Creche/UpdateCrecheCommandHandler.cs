@@ -22,11 +22,9 @@ public class UpdateCrecheCommandHandler : IRequestHandler<UpdateCrecheCommand>
     public async Task Handle(UpdateCrecheCommand request, CancellationToken cancellationToken)
     {
         var user = await _loggedUser.GetUserAsync();
+        var creche = await _crechesRepository.GetByIdentifierAsync(request.Identifier!);
 
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.Identifier!)
-            ?? throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
-
-        if (creche.UserIdentifier != user.Identifier)
+        if (creche == null || creche.UserIdentifier != user.Identifier)
             throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
 
         creche.Name = !string.IsNullOrEmpty(request.Name) ? request.Name : creche.Name;

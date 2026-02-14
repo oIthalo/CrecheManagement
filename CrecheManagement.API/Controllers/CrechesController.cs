@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CrecheManagement.API.Controllers;
 
 [ApiController]
+[IsAuthenticated]
 [Route("api/[controller]")]
 public class CrechesController : ControllerBase
 {
@@ -18,7 +19,6 @@ public class CrechesController : ControllerBase
     }
 
     [HttpGet]
-    [IsAuthenticated]
     public async Task<IActionResult> Read()
     {
         var result = await _mediator.Send(new GetCrechesQuery());
@@ -29,30 +29,27 @@ public class CrechesController : ControllerBase
     }
 
     [HttpPost]
-    [IsAuthenticated]
     public async Task<IActionResult> Create([FromBody] RegisterCrecheCommand command)
     {
         var result = await _mediator.Send(command);
         return Created(string.Empty, result);
     }
 
-    [HttpPut]
-    [IsAuthenticated]
-    [Route("{identifier}")]
-    public async Task<IActionResult> Update([FromRoute] string identifier, [FromBody] UpdateCrecheCommand command)
+    [HttpPatch]
+    [Route("{crecheIdentifier}")]
+    public async Task<IActionResult> Update([FromRoute] string crecheIdentifier, [FromBody] UpdateCrecheCommand command)
     {
-        command.Identifier = identifier;
+        command.Identifier = crecheIdentifier;
 
         await _mediator.Send(command);
         return NoContent();
     }
 
     [HttpDelete]
-    [IsAuthenticated]
-    [Route("{identifier}")]
-    public async Task<IActionResult> Delete([FromRoute] string identifier)
+    [Route("{crecheIdentifier}")]
+    public async Task<IActionResult> Delete([FromRoute] string crecheIdentifier)
     {
-        await _mediator.Send(new DeleteCrecheCommand { Identifier = identifier });
+        await _mediator.Send(new DeleteCrecheCommand { Identifier = crecheIdentifier });
         return NoContent();
     }
 }
