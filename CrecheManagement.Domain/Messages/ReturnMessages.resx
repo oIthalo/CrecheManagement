@@ -219,4 +219,64 @@
   <data name="CRECHES_RETURNED_SUCESSFULLY" xml:space="preserve">
     <value>Creches returned successfully.</value>
   </data>
+  <data name="CLASSROOM_EXIST" xml:space="preserve">
+    <value>A classroom with the same name in this year already exists in this creche.</value>
+  </data>
+  <data name="CLASSROOM_CREATED_SUCCESSFULLY" xml:space="preserve">
+    <value>Classroom created successfully.</value>
+  </data>
+  <data name="STUDENT_EXIST_ON_THIS_CLASSROOM" xml:space="preserve">
+    <value>Studend already is registered on this classroom:</value>
+  </data>
+  <data name="STUDENT_EXIST_WITH_CPF" xml:space="preserve">
+    <value>Already exist a student on this creche with this CPF.</value>
+  </data>
+  <data name="STUDENT_REGISTERED_SUCCESSFULLY" xml:space="preserve">
+    <value>Student registered successfully.</value>
+  </data>
+  <data name="CRECHE_IDENTIFIER_REQUIRED" xml:space="preserve">
+    <value>Creche identifier is required.</value>
+  </data>
+  <data name="CPF_REQUIRED" xml:space="preserve">
+    <value>CPF is required.</value>
+  </data>
+  <data name="BIRTH_DATE_REQUIRED" xml:space="preserve">
+    <value>Birth date is required.</value>
+  </data>
+  <data name="AGE_REQUIRED" xml:space="preserve">
+    <value>Age is required.</value>
+  </data>
+  <data name="GENDER_REQUIRED" xml:space="preserve">
+    <value>Gender is required.</value>
+  </data>
+  <data name="CPF_INVALID" xml:space="preserve">
+    <value>CPF is invalid.</value>
+  </data>
+  <data name="CLASSROOM_NOT_FOUND" xml:space="preserve">
+    <value>Classroom not found.</value>
+  </data>
+  <data name="NONE_STUDENT_FOUND" xml:space="preserve">
+    <value>None student found.</value>
+  </data>
+  <data name="STUDENTS_EXIST_ON_THIS_CLASSROOM" xml:space="preserve">
+    <value>The following students are already registered in this classroom:</value>
+  </data>
+  <data name="STUDENTS_INSERTEDS_ON_CLASSROOM" xml:space="preserve">
+    <value>Students inserteds on classroom.</value>
+  </data>
+  <data name="DOCUMENTS_INVALID" xml:space="preserve">
+    <value>Some of these documents are invalid.</value>
+  </data>
+  <data name="STUDENTS_RETURNED_SUCCESSFULLY" xml:space="preserve">
+    <value>Students returned successfully.</value>
+  </data>
+  <data name="STUDENT_NOT_FOUND" xml:space="preserve">
+    <value>Student not found.</value>
+  </data>
+  <data name="STUDENT_ALREADY_ON_THIS_CLASSROOM" xml:space="preserve">
+    <value>This student already is on this classroom.</value>
+  </data>
+  <data name="CLASSROOMS_RETURNED_SUCCESSFULLY" xml:space="preserve">
+    <value>Classrooms returned successfully.</value>
+  </data>
 </root>

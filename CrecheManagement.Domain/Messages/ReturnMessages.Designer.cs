@@ -133,6 +133,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age is required..
+        /// </summary>
+        public static string AGE_REQUIRED {
+            get {
+                return ResourceManager.GetString("AGE_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Already exist a creche with this CNPJ..
         /// </summary>
         public static string ALREADY_EXIST_CRECHE_WITH_CNPJ {
@@ -160,6 +169,51 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Birth date is required..
+        /// </summary>
+        public static string BIRTH_DATE_REQUIRED {
+            get {
+                return ResourceManager.GetString("BIRTH_DATE_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classroom created successfully..
+        /// </summary>
+        public static string CLASSROOM_CREATED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("CLASSROOM_CREATED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A classroom with the same name in this year already exists in this creche..
+        /// </summary>
+        public static string CLASSROOM_EXIST {
+            get {
+                return ResourceManager.GetString("CLASSROOM_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classroom not found..
+        /// </summary>
+        public static string CLASSROOM_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CLASSROOM_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classrooms returned successfully..
+        /// </summary>
+        public static string CLASSROOMS_RETURNED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("CLASSROOMS_RETURNED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CNPJ is not valid..
         /// </summary>
         public static string CNPJ_INVALID {
@@ -183,6 +237,33 @@ namespace CrecheManagement.Domain.Messages {
         public static string CONTACT_NUMBER_INVALID {
             get {
                 return ResourceManager.GetString("CONTACT_NUMBER_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPF is invalid..
+        /// </summary>
+        public static string CPF_INVALID {
+            get {
+                return ResourceManager.GetString("CPF_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPF is required..
+        /// </summary>
+        public static string CPF_REQUIRED {
+            get {
+                return ResourceManager.GetString("CPF_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creche identifier is required..
+        /// </summary>
+        public static string CRECHE_IDENTIFIER_REQUIRED {
+            get {
+                return ResourceManager.GetString("CRECHE_IDENTIFIER_REQUIRED", resourceCulture);
             }
         }
         
@@ -241,6 +322,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Some of these documents are invalid..
+        /// </summary>
+        public static string DOCUMENTS_INVALID {
+            get {
+                return ResourceManager.GetString("DOCUMENTS_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is not valid..
         /// </summary>
         public static string EMAIL_INVALID {
@@ -264,6 +354,15 @@ namespace CrecheManagement.Domain.Messages {
         public static string ERROR_CONSULT_CNPJ {
             get {
                 return ResourceManager.GetString("ERROR_CONSULT_CNPJ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender is required..
+        /// </summary>
+        public static string GENDER_REQUIRED {
+            get {
+                return ResourceManager.GetString("GENDER_REQUIRED", resourceCulture);
             }
         }
         
@@ -304,6 +403,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None student found..
+        /// </summary>
+        public static string NONE_STUDENT_FOUND {
+            get {
+                return ResourceManager.GetString("NONE_STUDENT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password must be between 8 and 24 characters..
         /// </summary>
         public static string PASSWORD_LENGTH {
@@ -336,6 +444,78 @@ namespace CrecheManagement.Domain.Messages {
         public static string REFRESH_TOKEN_GENERATED_SUCCESSFULLY {
             get {
                 return ResourceManager.GetString("REFRESH_TOKEN_GENERATED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This student already is on this classroom..
+        /// </summary>
+        public static string STUDENT_ALREADY_ON_THIS_CLASSROOM {
+            get {
+                return ResourceManager.GetString("STUDENT_ALREADY_ON_THIS_CLASSROOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Studend already is registered on this classroom:.
+        /// </summary>
+        public static string STUDENT_EXIST_ON_THIS_CLASSROOM {
+            get {
+                return ResourceManager.GetString("STUDENT_EXIST_ON_THIS_CLASSROOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already exist a student on this creche with this CPF..
+        /// </summary>
+        public static string STUDENT_EXIST_WITH_CPF {
+            get {
+                return ResourceManager.GetString("STUDENT_EXIST_WITH_CPF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student not found..
+        /// </summary>
+        public static string STUDENT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("STUDENT_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student registered successfully..
+        /// </summary>
+        public static string STUDENT_REGISTERED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("STUDENT_REGISTERED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following students are already registered in this classroom:.
+        /// </summary>
+        public static string STUDENTS_EXIST_ON_THIS_CLASSROOM {
+            get {
+                return ResourceManager.GetString("STUDENTS_EXIST_ON_THIS_CLASSROOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Students inserteds on classroom..
+        /// </summary>
+        public static string STUDENTS_INSERTEDS_ON_CLASSROOM {
+            get {
+                return ResourceManager.GetString("STUDENTS_INSERTEDS_ON_CLASSROOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Students returned successfully..
+        /// </summary>
+        public static string STUDENTS_RETURNED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("STUDENTS_RETURNED_SUCCESSFULLY", resourceCulture);
             }
         }
         

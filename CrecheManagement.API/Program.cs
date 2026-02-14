@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using CrecheManagement.API.Handlers;
 using CrecheManagement.API.Providers;
 using CrecheManagement.Domain.Behaviors;
@@ -11,6 +12,7 @@ using CrecheManagement.Infrastructure.Context;
 using CrecheManagement.Infrastructure.Mappings;
 using CrecheManagement.Infrastructure.Repositories;
 using CrecheManagement.Infrastructure.Security;
+using CrecheManagement.Infrastructure.Services;
 using FluentValidation;
 using MediatR;
 using Microsoft.OpenApi.Models;
@@ -18,7 +20,13 @@ using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(opts =>
+    {
+        opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opts =>
 {
@@ -71,9 +79,12 @@ builder.Services.AddSingleton<ITextEncrypter, BCryptNet>();
 builder.Services.AddSingleton<ITokensService, TokensService>();
 builder.Services.AddSingleton<ITokenProvider, TokenProvider>();
 builder.Services.AddSingleton<ILoggedUser, LoggedUserService>();
+builder.Services.AddSingleton<IImageUploader, ImageUploader>();
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<ICrechesRepository, CrechesRepository>();
+builder.Services.AddScoped<IClassroomsRepository, ClassroomsRepository>();
+builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
 
 var app = builder.Build();
 

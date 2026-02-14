@@ -20,4 +20,6 @@ public class MongoContext
 
     public IMongoCollection<Creche> Creches => _db.GetCollection<Creche>("Creches");
     public IMongoCollection<User> Users => _db.GetCollection<User>("Users");
+    public IMongoCollection<Classroom> Classrooms => _db.GetCollection<Classroom>("Classrooms");
+    public IMongoCollection<Student> Students => _db.GetCollection<Student>("Students");
 }
