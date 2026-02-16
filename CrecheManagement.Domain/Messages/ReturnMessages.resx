@@ -279,4 +279,16 @@
   <data name="CLASSROOMS_RETURNED_SUCCESSFULLY" xml:space="preserve">
     <value>Classrooms returned successfully.</value>
   </data>
+  <data name="ATTENDANCES_REGISTERED_SUCCESSFULLY" xml:space="preserve">
+    <value>Attendances registered successfully.</value>
+  </data>
+  <data name="SOME_STUDENT_NOT_FOUND" xml:space="preserve">
+    <value>Some of this students was not found.</value>
+  </data>
+  <data name="ATTENDANCE_ALREADY_REGISTERED_TO" xml:space="preserve">
+    <value>The attendance already was registered today to:</value>
+  </data>
+  <data name="ATTENDANCES_RETURNED_SUCCESSFULLY" xml:space="preserve">
+    <value>Attendances returned successfully.</value>
+  </data>
 </root>

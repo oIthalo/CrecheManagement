@@ -85,6 +85,7 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<ICrechesRepository, CrechesRepository>();
 builder.Services.AddScoped<IClassroomsRepository, ClassroomsRepository>();
 builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IAttendancesRepository, AttendancesRepository>();
 
 var app = builder.Build();
 

@@ -2,10 +2,10 @@
 
 namespace CrecheManagement.Domain.Responses.Classroom;
 
-public class ClassroomResponse
+public record ClassroomResponse
 {
-    public string Identifier { get; set; }
-    public string Name { get; set; }
-    public int Year { get; set; }
-    public List<ClassroomStudentsDto> Students { get; set; }
+    public string Identifier { get; init; }
+    public string Name { get; init; }
+    public int Year { get; init; }
+    public List<ClassroomStudentsDto> Students { get; init; }
 }

@@ -160,6 +160,33 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The attendance already was registered today to:.
+        /// </summary>
+        public static string ATTENDANCE_ALREADY_REGISTERED_TO {
+            get {
+                return ResourceManager.GetString("ATTENDANCE_ALREADY_REGISTERED_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendances registered successfully..
+        /// </summary>
+        public static string ATTENDANCES_REGISTERED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("ATTENDANCES_REGISTERED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attendances returned successfully..
+        /// </summary>
+        public static string ATTENDANCES_RETURNED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("ATTENDANCES_RETURNED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authorization token missing..
         /// </summary>
         public static string AUTHORIZATION_MISSING {
@@ -444,6 +471,15 @@ namespace CrecheManagement.Domain.Messages {
         public static string REFRESH_TOKEN_GENERATED_SUCCESSFULLY {
             get {
                 return ResourceManager.GetString("REFRESH_TOKEN_GENERATED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some of this students was not found..
+        /// </summary>
+        public static string SOME_STUDENT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("SOME_STUDENT_NOT_FOUND", resourceCulture);
             }
         }
         

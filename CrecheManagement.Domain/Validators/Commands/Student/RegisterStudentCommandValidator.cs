@@ -13,7 +13,6 @@ public class RegisterStudentCommandValidator : AbstractValidator<RegisterStudent
         RuleFor(x => x.CrecheIdentifier).NotNull().NotEmpty().WithMessage(ReturnMessages.CRECHE_IDENTIFIER_REQUIRED);
         RuleFor(x => x.CPF).NotNull().NotEmpty().WithMessage(ReturnMessages.CPF_REQUIRED);
         RuleFor(x => x.BirthDate).NotNull().WithMessage(ReturnMessages.BIRTH_DATE_REQUIRED);
-        RuleFor(x => x.Age).NotNull().WithMessage(ReturnMessages.AGE_REQUIRED);
         RuleFor(x => x.Gender).NotNull().WithMessage(ReturnMessages.GENDER_REQUIRED);
 
         RuleFor(x => x.CPF)

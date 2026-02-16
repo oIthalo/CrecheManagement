@@ -44,12 +44,11 @@ public class RegisterStudentCommandHandler : IRequestHandler<RegisterStudentComm
         var student = new Models.Student()
         {
             Name = request.Name,
-            CPF = request.CPF,
             ContactNumber = request.ContactNumber,
-            Age = request.Age,
             BirthDate = request.BirthDate.Date,
             CrecheIdentifier = request.CrecheIdentifier!,
             Gender = request.Gender,
+            CPF = Util.KeepLettersAndNumbers(request.CPF),
         };
 
         try

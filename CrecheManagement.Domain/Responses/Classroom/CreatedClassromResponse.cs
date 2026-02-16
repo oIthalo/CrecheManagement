@@ -2,6 +2,7 @@
 
 public record CreatedClassromResponse
 {
+    public string Identifier { get; init; }
     public string Name { get; init; }
     public int Year { get; init; }
 }
