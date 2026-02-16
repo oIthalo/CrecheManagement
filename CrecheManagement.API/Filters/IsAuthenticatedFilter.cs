@@ -4,6 +4,7 @@ using CrecheManagement.Domain.Interfaces.Services;
 using CrecheManagement.Domain.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CrecheManagement.API.Filters;
 
@@ -31,7 +32,18 @@ public class IsAuthenticatedFilter : IAuthorizationFilter
             context.Result = new ObjectResult(new ErrorResponse()
             {
                 ErrorMessage = ex.Message,
+                ErrorCode = ex.ErrorCode,
                 StatusCode = (int)ex.StatusCode
+            });
+        }
+        catch (SecurityTokenExpiredException)
+        {
+            context.HttpContext.Response.StatusCode = 401;
+            context.Result = new ObjectResult(new ErrorResponse()
+            {
+                StatusCode = 401,
+                ErrorCode = "UNAUTHORIZED",
+                ErrorMessage = "Unauthorized. COD: 004.",
             });
         }
         catch
@@ -40,6 +52,7 @@ public class IsAuthenticatedFilter : IAuthorizationFilter
             context.Result = new ObjectResult(new ErrorResponse()
             {
                 StatusCode = 401,
+                ErrorCode = "UNAUTHORIZED",
                 ErrorMessage = "Unauthorized. COD: 001.",
             });
         }

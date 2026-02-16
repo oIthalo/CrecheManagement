@@ -12,7 +12,6 @@ public class Student : BaseModel
     public string Name { get; set; }
     public string CPF { get; set; }
     public string? ContactNumber { get; set; }
-    public int Age { get; set; }
     public DateTime BirthDate { get; set; }
     [BsonRepresentation(BsonType.String)]
     public EGender Gender { get; set; }

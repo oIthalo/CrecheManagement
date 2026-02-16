@@ -5,7 +5,7 @@ namespace CrecheManagement.Domain.Utils;
 public class ErrorResponse
 {
     public int StatusCode { get; set; }
-    public string ErrorCode { get; set; }
+    public string? ErrorCode { get; set; }
     public string ErrorMessage { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

@@ -7,7 +7,6 @@ public record StudentResponse
     public string Name { get; init; }
     public string CPF { get; init; }
     public string? ContactNumber { get; init; }
-    public int Age { get; init; }
     public DateTime BirthDate { get; init; }
     public string Gender { get; init; }
     public string RegistrationId { get; init; }

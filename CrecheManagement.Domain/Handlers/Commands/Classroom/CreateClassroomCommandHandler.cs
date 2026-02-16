@@ -55,6 +55,7 @@ public class CreateClassroomCommandHandler : IRequestHandler<CreateClassroomComm
             Message = ReturnMessages.CLASSROOM_CREATED_SUCCESSFULLY,
             Data = new CreatedClassromResponse
             {
+                Identifier = classRoom.Identifier,
                 Name = classRoom.Name,
                 Year = classRoom.Year
             }

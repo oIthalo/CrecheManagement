@@ -20,6 +20,7 @@ public class ExceptionsFilter : IExceptionFilter
             {
                 StatusCode = (int)crecheException.StatusCode,
                 ErrorMessage = crecheException.Message,
+                ErrorCode = crecheException.ErrorCode
             });
 
             return;
@@ -32,6 +33,7 @@ public class ExceptionsFilter : IExceptionFilter
             {
                 StatusCode = 400,
                 ErrorMessage = ReturnMessages.DEFAULT_VALIDATION_ERROR,
+                ErrorCode = "VALIDATION_ERROR",
                 Errors = validationException.Errors.Select(x => new ErrorValidation()
                 {
                     Field = x.PropertyName,
@@ -42,7 +44,7 @@ public class ExceptionsFilter : IExceptionFilter
             return;
         }
 
-        context.HttpContext.Response.StatusCode = 400;
+        context.HttpContext.Response.StatusCode = 500;
         context.Result = new ObjectResult(new ErrorResponse()
         {
             StatusCode = 500,
