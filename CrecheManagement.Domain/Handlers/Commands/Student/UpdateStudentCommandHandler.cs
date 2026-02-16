@@ -12,29 +12,22 @@ namespace CrecheManagement.Domain.Handlers.Commands.Student;
 public class UpdateStudentCommandHandler : IRequestHandler<UpdateStudentCommand>
 {
     private readonly IStudentsRepository _studentsRepository;
-    private readonly ICrechesRepository _crechesRepository;
     private readonly IClassroomsRepository _classroomsRepository;
-    private readonly ILoggedUser _loggedUser;
+    private readonly ICrecheAuthorizationService _crecheAuthorizationService;
 
     public UpdateStudentCommandHandler(
         IStudentsRepository studentsRepository,
-        ICrechesRepository crechesRepository,
-        ILoggedUser loggedUser,
-        IClassroomsRepository classroomsRepository)
+        IClassroomsRepository classroomsRepository,
+        ICrecheAuthorizationService crecheAuthorizationService)
     {
         _studentsRepository = studentsRepository;
-        _crechesRepository = crechesRepository;
-        _loggedUser = loggedUser;
         _classroomsRepository = classroomsRepository;
+        _crecheAuthorizationService = crecheAuthorizationService;
     }
 
     public async Task Handle(UpdateStudentCommand request, CancellationToken cancellationToken)
     {
-        var user = await _loggedUser.GetUserAsync();
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.CrecheIdentifier!);
-
-        if (creche == null || creche.UserIdentifier != user.Identifier)
-            throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
+        var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
         var student = await _studentsRepository.GetStudentAsync(request.StudentIdentifier!)
             ?? throw new CrecheManagementException(ReturnMessages.STUDENT_NOT_FOUND, HttpStatusCode.NotFound);

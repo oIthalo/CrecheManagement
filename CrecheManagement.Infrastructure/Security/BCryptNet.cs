@@ -1,4 +1,4 @@
-﻿using CrecheManagement.Domain.Interfaces.Encrypter;
+﻿using CrecheManagement.Domain.Interfaces.Security;
 
 namespace CrecheManagement.Infrastructure.Security;
 

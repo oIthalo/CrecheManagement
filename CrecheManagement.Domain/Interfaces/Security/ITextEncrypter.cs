@@ -1,4 +1,4 @@
-﻿namespace CrecheManagement.Domain.Interfaces.Encrypter;
+﻿namespace CrecheManagement.Domain.Interfaces.Security;
 
 public interface ITextEncrypter
 {

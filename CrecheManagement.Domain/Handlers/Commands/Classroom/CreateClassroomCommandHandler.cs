@@ -4,7 +4,6 @@ using CrecheManagement.Domain.Exceptions;
 using CrecheManagement.Domain.Interfaces.Repositories;
 using CrecheManagement.Domain.Interfaces.Services;
 using CrecheManagement.Domain.Messages;
-using CrecheManagement.Domain.Models;
 using CrecheManagement.Domain.Responses.Class;
 using CrecheManagement.Domain.Utils;
 using MediatR;
@@ -14,26 +13,19 @@ namespace CrecheManagement.Domain.Handlers.Commands.Class;
 public class CreateClassroomCommandHandler : IRequestHandler<CreateClassroomCommand, BaseResponse<CreatedClassromResponse>>
 {
     private readonly IClassroomsRepository _classesRepository;
-    private readonly ICrechesRepository _crechesRepository;
-    private readonly ILoggedUser _loggedUser;
+    private readonly ICrecheAuthorizationService _crecheAuthorizationService;
 
     public CreateClassroomCommandHandler(
-        IClassroomsRepository classesRepository, 
-        ICrechesRepository crechesRepository, 
-        ILoggedUser loggedUser)
+        IClassroomsRepository classesRepository,
+        ICrecheAuthorizationService crecheAuthorizationService)
     {
         _classesRepository = classesRepository;
-        _crechesRepository = crechesRepository;
-        _loggedUser = loggedUser;
+        _crecheAuthorizationService = crecheAuthorizationService;
     }
 
     public async Task<BaseResponse<CreatedClassromResponse>> Handle(CreateClassroomCommand request, CancellationToken cancellationToken)
     {
-        var user = await _loggedUser.GetUserAsync();
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.CrecheIdentifier!);
-
-        if (creche == null || creche.UserIdentifier != user.Identifier)
-            throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
+        var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
         var year = DateTime.Now.Year;
 
