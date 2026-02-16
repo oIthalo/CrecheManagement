@@ -1,6 +1,6 @@
 ﻿using CrecheManagement.Domain.Models;
 
-namespace CrecheManagement.Domain.Interfaces.Services;
+namespace CrecheManagement.Domain.Interfaces.Security;
 
 public interface ILoggedUser
 {

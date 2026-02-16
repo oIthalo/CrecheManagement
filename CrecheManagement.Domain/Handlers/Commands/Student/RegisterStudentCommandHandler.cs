@@ -14,29 +14,22 @@ namespace CrecheManagement.Domain.Handlers.Commands.Student;
 public class RegisterStudentCommandHandler : IRequestHandler<RegisterStudentCommand, BaseResponse<RegisteredStudentResponse>>
 {
     private readonly IStudentsRepository _studentsRepository;
-    private readonly ICrechesRepository _crechesRepository;
-    private readonly ILoggedUser _loggedUser;
     private readonly IImageUploader _imageUploader;
+    private readonly ICrecheAuthorizationService _crecheAuthorizationService;
 
     public RegisterStudentCommandHandler(
         IStudentsRepository studentsRepository,
-        ILoggedUser loggedUser,
-        ICrechesRepository crechesRepository,
-        IImageUploader imageUploader)
+        IImageUploader imageUploader,
+        ICrecheAuthorizationService crecheAuthorizationService)
     {
         _studentsRepository = studentsRepository;
-        _loggedUser = loggedUser;
-        _crechesRepository = crechesRepository;
         _imageUploader = imageUploader;
+        _crecheAuthorizationService = crecheAuthorizationService;
     }
 
     public async Task<BaseResponse<RegisteredStudentResponse>> Handle(RegisterStudentCommand request, CancellationToken cancellationToken)
     {
-        var user = await _loggedUser.GetUserAsync();
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.CrecheIdentifier!);
-
-        if (creche == null || creche.UserIdentifier != user.Identifier)
-            throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
+        var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
         if (await _studentsRepository.ExistStudentWithCPFAsync(request.CrecheIdentifier!, request.CPF))
             throw new CrecheManagementException(ReturnMessages.STUDENT_EXIST_WITH_CPF, HttpStatusCode.Conflict);

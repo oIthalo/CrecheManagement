@@ -12,30 +12,23 @@ namespace CrecheManagement.Domain.Handlers.Commands.Classroom;
 
 public class InsertStudentsToClassroomCommandHandler : IRequestHandler<InsertStudentsToClassroomCommand, BaseResponse<List<ClassroomStudentsDto>>>
 {
-    private readonly ICrechesRepository _crechesRepository;
     private readonly IClassroomsRepository _classroomsRepository;
     private readonly IStudentsRepository _studentsRepository;
-    private readonly ILoggedUser _loggedUser;
+    private readonly ICrecheAuthorizationService _crecheAuthorizationService;
 
     public InsertStudentsToClassroomCommandHandler(
-        ICrechesRepository crechesRepository,
         IClassroomsRepository classroomsRepository,
         IStudentsRepository studentsRepository,
-        ILoggedUser loggedUser)
+        ICrecheAuthorizationService crecheAuthorizationService)
     {
-        _crechesRepository = crechesRepository;
         _classroomsRepository = classroomsRepository;
         _studentsRepository = studentsRepository;
-        _loggedUser = loggedUser;
+        _crecheAuthorizationService = crecheAuthorizationService;
     }
 
     public async Task<BaseResponse<List<ClassroomStudentsDto>>> Handle(InsertStudentsToClassroomCommand request, CancellationToken cancellationToken)
     {
-        var user = await _loggedUser.GetUserAsync();
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.CrecheIdentifier!);
-
-        if (creche == null || creche.UserIdentifier != user.Identifier)
-            throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
+        var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
         var classroom = await _classroomsRepository.GetByIdentifierAsync(request.ClassroomIdentifier!)
             ?? throw new CrecheManagementException(ReturnMessages.CLASSROOM_NOT_FOUND, HttpStatusCode.NotFound);

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using CrecheManagement.Domain.Exceptions;
 using CrecheManagement.Domain.Interfaces.Providers;
-using CrecheManagement.Domain.Interfaces.Services;
+using CrecheManagement.Domain.Interfaces.Security;
 using CrecheManagement.Domain.Messages;
 using CrecheManagement.Domain.Models;
 using CrecheManagement.Infrastructure.Context;

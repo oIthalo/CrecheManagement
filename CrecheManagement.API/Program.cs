@@ -4,9 +4,9 @@ using CrecheManagement.API.Providers;
 using CrecheManagement.Domain.Behaviors;
 using CrecheManagement.Domain.Commands.Creche;
 using CrecheManagement.Domain.HttpClient.CNPJ;
-using CrecheManagement.Domain.Interfaces.Encrypter;
 using CrecheManagement.Domain.Interfaces.Providers;
 using CrecheManagement.Domain.Interfaces.Repositories;
+using CrecheManagement.Domain.Interfaces.Security;
 using CrecheManagement.Domain.Interfaces.Services;
 using CrecheManagement.Infrastructure.Context;
 using CrecheManagement.Infrastructure.Mappings;
@@ -86,6 +86,7 @@ builder.Services.AddScoped<ICrechesRepository, CrechesRepository>();
 builder.Services.AddScoped<IClassroomsRepository, ClassroomsRepository>();
 builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
 builder.Services.AddScoped<IAttendancesRepository, AttendancesRepository>();
+builder.Services.AddScoped<ICrecheAuthorizationService, CrecheAuthorizationService>();
 
 var app = builder.Build();
 

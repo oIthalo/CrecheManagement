@@ -2,15 +2,13 @@
 using CrecheManagement.Domain.Commands.Auth;
 using CrecheManagement.Domain.Dtos;
 using CrecheManagement.Domain.Exceptions;
-using CrecheManagement.Domain.Interfaces.Encrypter;
 using CrecheManagement.Domain.Interfaces.Repositories;
-using CrecheManagement.Domain.Interfaces.Services;
+using CrecheManagement.Domain.Interfaces.Security;
 using CrecheManagement.Domain.Messages;
 using CrecheManagement.Domain.Models;
 using CrecheManagement.Domain.Responses.Auth;
 using CrecheManagement.Domain.Utils;
 using MediatR;
-using MongoDB.Driver.Linq;
 
 namespace CrecheManagement.Domain.Handlers.Commands.Auth;
 

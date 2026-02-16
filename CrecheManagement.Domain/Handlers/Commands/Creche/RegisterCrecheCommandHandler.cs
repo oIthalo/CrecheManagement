@@ -3,7 +3,7 @@ using CrecheManagement.Domain.Commands.Creche;
 using CrecheManagement.Domain.Exceptions;
 using CrecheManagement.Domain.HttpClient.CNPJ;
 using CrecheManagement.Domain.Interfaces.Repositories;
-using CrecheManagement.Domain.Interfaces.Services;
+using CrecheManagement.Domain.Interfaces.Security;
 using CrecheManagement.Domain.Messages;
 using CrecheManagement.Domain.Models;
 using CrecheManagement.Domain.Responses.Creche;

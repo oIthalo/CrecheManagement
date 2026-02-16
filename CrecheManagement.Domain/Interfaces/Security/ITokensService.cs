@@ -1,4 +1,4 @@
-﻿namespace CrecheManagement.Domain.Interfaces.Services;
+﻿namespace CrecheManagement.Domain.Interfaces.Security;
 
 public interface ITokensService
 {

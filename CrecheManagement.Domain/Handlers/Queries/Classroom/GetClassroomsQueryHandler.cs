@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using AutoMapper;
-using CrecheManagement.Domain.Exceptions;
 using CrecheManagement.Domain.Interfaces.Repositories;
 using CrecheManagement.Domain.Interfaces.Services;
 using CrecheManagement.Domain.Messages;
@@ -14,29 +13,22 @@ namespace CrecheManagement.Domain.Handlers.Queries.Classroom;
 public class GetClassroomsQueryHandler : IRequestHandler<GetClassroomsQuery, BaseResponse<List<ClassroomResponse>>>
 {
     private readonly IClassroomsRepository _classroomsRepository;
-    private readonly ICrechesRepository _crechesRepository;
-    private readonly ILoggedUser _loggedUser;
+    private readonly ICrecheAuthorizationService _crecheAuthorizationService;
     private readonly IMapper _mapper;
 
     public GetClassroomsQueryHandler(
-        IClassroomsRepository classroomsRepository, 
-        ICrechesRepository crechesRepository, 
-        ILoggedUser loggedUser, 
+        IClassroomsRepository classroomsRepository,
+        ICrecheAuthorizationService crecheAuthorizationService,
         IMapper mapper)
     {
         _classroomsRepository = classroomsRepository;
-        _crechesRepository = crechesRepository;
-        _loggedUser = loggedUser;
+        _crecheAuthorizationService = crecheAuthorizationService;
         _mapper = mapper;
     }
 
     public async Task<BaseResponse<List<ClassroomResponse>>> Handle(GetClassroomsQuery request, CancellationToken cancellationToken)
     {
-        var user = await _loggedUser.GetUserAsync();
-        var creche = await _crechesRepository.GetByIdentifierAsync(request.CrecheIdentifier!);
-
-        if (creche == null || creche.UserIdentifier != user.Identifier)
-            throw new CrecheManagementException(ReturnMessages.CRECHE_NOT_FOUND, HttpStatusCode.NotFound);
+        var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
         var year = request.Year ?? DateTime.Now.Year;
         var classrooms = await _classroomsRepository.GetClassroomsAsync(request.CrecheIdentifier!, year);
