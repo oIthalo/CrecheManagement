@@ -9,7 +9,7 @@ public class RegisterUserCommandValidator : AbstractValidator<RegisterUserComman
     public RegisterUserCommandValidator()
     {
         RuleFor(x => x.Username).NotNull().NotEmpty().WithMessage(ReturnMessages.NAME_REQUIRED);
-        RuleFor(x => x.KeepAlive).NotNull().NotEmpty().WithMessage(ReturnMessages.KEEPALIVE_REQUIRED);
+        RuleFor(x => x.KeepAlive).NotNull().WithMessage(ReturnMessages.KEEPALIVE_REQUIRED);
 
         RuleFor(x => x.Email).NotNull().NotEmpty().WithMessage(ReturnMessages.EMAIL_REQUIRED);
         RuleFor(x => x.Email)

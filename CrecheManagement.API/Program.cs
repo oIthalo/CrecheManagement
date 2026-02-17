@@ -88,12 +88,22 @@ builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
 builder.Services.AddScoped<IAttendancesRepository, AttendancesRepository>();
 builder.Services.AddScoped<ICrecheAuthorizationService, CrecheAuthorizationService>();
 
+builder.Services.AddCors(policy =>
+{
+    policy.AddPolicy("CorsPolicy", opts => opts
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
