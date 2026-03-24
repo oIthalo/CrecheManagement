@@ -70,7 +70,7 @@ public class RegisterAttendanceCommandHandler : IRequestHandler<RegisterAttendan
 
         return new BaseResponse
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.ATTENDANCES_REGISTERED_SUCCESSFULLY
         };
     }

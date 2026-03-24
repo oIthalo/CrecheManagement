@@ -38,19 +38,19 @@ public class GetStudentsQueryHandler : IRequestHandler<GetStudentsQuery, BaseRes
 
         if (string.IsNullOrEmpty(request.ClassroomIdentifier))
         {
-            students = await _studentsRepository.GetStudentsByCrecheAsync(request.CrecheIdentifier);
+            students = await _studentsRepository.GetStudentsByCrecheAsync(creche.Identifier);
         }
         else
         {
             var classroom = await _classroomsRepository.GetByIdentifierAsync(request.ClassroomIdentifier)
                 ?? throw new CrecheManagementException(ReturnMessages.CLASSROOM_NOT_FOUND, HttpStatusCode.NotFound);
 
-            students = await _studentsRepository.GetStudentsByClassroomAsync(request.ClassroomIdentifier);
+            students = await _studentsRepository.GetStudentsByClassroomAsync(classroom.Identifier);
         }
 
         return new BaseResponse<List<StudentResponse>>
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.STUDENTS_RETURNED_SUCCESSFULLY,
             Data = _mapper.Map<List<StudentResponse>>(students)
         };

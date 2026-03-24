@@ -71,7 +71,7 @@ public class InsertStudentsToClassroomCommandHandler : IRequestHandler<InsertStu
 
         return new BaseResponse<List<ClassroomStudentsDto>>
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.STUDENTS_INSERTEDS_ON_CLASSROOM,
             Data = response
         };

@@ -291,4 +291,7 @@
   <data name="ATTENDANCES_RETURNED_SUCCESSFULLY" xml:space="preserve">
     <value>Attendances returned successfully.</value>
   </data>
+  <data name="DASHBOARD_RETURNED_SUCCESSFULLY" xml:space="preserve">
+    <value>Dashboard returned successfully.</value>
+  </data>
 </root>

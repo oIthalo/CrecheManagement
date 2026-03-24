@@ -42,7 +42,7 @@ public class GetClassroomAttendancesQueryHandler : IRequestHandler<GetClassroomA
         return new BaseResponse<List<AttendanceResponse>>
         {
             Message = ReturnMessages.ATTENDANCES_RETURNED_SUCCESSFULLY,
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Data = _mapper.Map<List<AttendanceResponse>>(attendances)
         };
     }

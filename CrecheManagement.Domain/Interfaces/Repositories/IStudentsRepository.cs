@@ -9,6 +9,7 @@ public interface IStudentsRepository
     Task<List<Student>> GetStudentsAsync(List<string> studentsIdentifier);
     Task<Student?> GetStudentAsync(string studentIdentifier);
     Task<bool> ExistStudentWithCPFAsync(string crecheIdentifier, string cpf);
+    Task<long> GetTotalStudents(string crecheIdentifier);
     Task UpsertAsync(Student student);
     Task UpsertRangeAsync(List<Student> students);
 }

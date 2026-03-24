@@ -1,6 +1,7 @@
 ﻿using CrecheManagement.API.Attributes;
 using CrecheManagement.Domain.Commands.Creche;
 using CrecheManagement.Domain.Queries.Creche;
+using CrecheManagement.Domain.Queries.Dashboard;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +26,15 @@ public class CrechesController : ControllerBase
         if (!result.Data.Any())
             return NoContent();
 
-        return Created(string.Empty, result);
+        return Ok(result);
+    }
+
+    [HttpGet]
+    [Route("{crecheIdentifier}/dashboard")]
+    public async Task<IActionResult> ReadDashboard(string crecheIdentifier)
+    {
+        var result = await _mediator.Send(new GetDashboardQuery { CrecheIdentifier = crecheIdentifier });
+        return Ok(result);
     }
 
     [HttpPost]

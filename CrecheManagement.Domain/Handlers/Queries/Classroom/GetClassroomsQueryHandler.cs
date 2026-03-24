@@ -35,7 +35,7 @@ public class GetClassroomsQueryHandler : IRequestHandler<GetClassroomsQuery, Bas
 
         return new BaseResponse<List<ClassroomResponse>>
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.CLASSROOMS_RETURNED_SUCCESSFULLY,
             Data = _mapper.Map<List<ClassroomResponse>>(classrooms),
         };

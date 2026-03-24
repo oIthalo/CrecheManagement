@@ -58,7 +58,7 @@ public class RegisterCrecheCommandHandler : IRequestHandler<RegisterCrecheComman
         return new BaseResponse<CreatedCrecheResponse>()
         {
             Message = ReturnMessages.CRECHE_REGISTERED_SUCCESSFULLY,
-            StatusCode = HttpStatusCode.Created,
+            StatusCode = (int)HttpStatusCode.Created,
             Data = new CreatedCrecheResponse(creche.Identifier, creche.Name)
         };
     }

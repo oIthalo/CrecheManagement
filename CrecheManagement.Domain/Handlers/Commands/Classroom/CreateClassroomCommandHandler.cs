@@ -43,7 +43,7 @@ public class CreateClassroomCommandHandler : IRequestHandler<CreateClassroomComm
 
         return new BaseResponse<CreatedClassromResponse>
         {
-            StatusCode = HttpStatusCode.Created,
+            StatusCode = (int)HttpStatusCode.Created,
             Message = ReturnMessages.CLASSROOM_CREATED_SUCCESSFULLY,
             Data = new CreatedClassromResponse
             {

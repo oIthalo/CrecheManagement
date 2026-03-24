@@ -53,7 +53,7 @@ public class AuthUserCommandHandler :
 
         return new BaseResponse<UserResponse>()
         {
-            StatusCode = HttpStatusCode.Created,
+            StatusCode = (int)HttpStatusCode.Created,
             Message = ReturnMessages.USER_REGISTERED_SUCCESSFULLY,
             Data = new UserResponse(user.Username, user.Email, tokens)
         };
@@ -77,7 +77,7 @@ public class AuthUserCommandHandler :
 
         return new BaseResponse<UserResponse>()
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.USER_LOGGED_SUCCESSFULLY,
             Data = new UserResponse(user.Username, user.Email, tokens)
         };
@@ -101,7 +101,7 @@ public class AuthUserCommandHandler :
 
         return new BaseResponse<TokensDto>()
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.REFRESH_TOKEN_GENERATED_SUCCESSFULLY,
             Data = tokens
         };

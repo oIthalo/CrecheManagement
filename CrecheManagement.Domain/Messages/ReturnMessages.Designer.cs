@@ -331,6 +331,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dashboard returned successfully..
+        /// </summary>
+        public static string DASHBOARD_RETURNED_SUCCESSFULLY {
+            get {
+                return ResourceManager.GetString("DASHBOARD_RETURNED_SUCCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Internal server error..
         /// </summary>
         public static string DEFAULT_INTERNAL_ERROR {

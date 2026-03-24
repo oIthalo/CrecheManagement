@@ -48,6 +48,12 @@ public class StudentsRepository : IStudentsRepository
         return await _mongo.Students.Find(filter).AnyAsync();
     }
 
+    public async Task<long> GetTotalStudents(string crecheIdentifier)
+    {
+        var filter = Builders<Student>.Filter.Eq(s => s.CrecheIdentifier, crecheIdentifier);
+        return await _mongo.Students.Find(filter).CountDocumentsAsync();
+    }
+
     public async Task UpsertAsync(Student student)
     {
         var filter = Builders<Student>.Filter.Eq(s => s.CrecheIdentifier, student.CrecheIdentifier);

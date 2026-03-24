@@ -14,6 +14,16 @@ public class AttendancesRepository : IAttendancesRepository
         _mongo = mongo;
     }
 
+    public async Task<List<Attendance>> GetAllAttendancesTodayAsync(string crecheIdentifier)
+    {
+        var filter = Builders<Attendance>.Filter.And(
+            Builders<Attendance>.Filter.Eq(x => x.CrecheIdentifier, crecheIdentifier),
+            Builders<Attendance>.Filter.Eq(x => x.Date, DateTime.Now.Date)
+        );
+
+        return await _mongo.Attendances.Find(filter).ToListAsync();
+    }
+
     public async Task<List<Attendance>> GetClassroomAttendancesAsync(string classroomIdentifier, DateTime? date = null)
     {
         var filters = new List<FilterDefinition<Attendance>>

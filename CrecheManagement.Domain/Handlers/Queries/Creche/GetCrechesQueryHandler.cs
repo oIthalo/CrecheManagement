@@ -30,7 +30,7 @@ public class GetCrechesQueryHandler : IRequestHandler<GetCrechesQuery, BaseRespo
 
         return new BaseResponse<List<CrecheResponse>>()
         {
-            StatusCode = HttpStatusCode.OK,
+            StatusCode = (int)HttpStatusCode.OK,
             Message = ReturnMessages.CRECHES_RETURNED_SUCESSFULLY,
             Data = _mapper.Map<List<CrecheResponse>>(creches)
         };

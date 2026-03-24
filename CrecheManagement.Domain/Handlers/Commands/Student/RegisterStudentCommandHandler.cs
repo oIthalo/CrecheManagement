@@ -67,7 +67,7 @@ public class RegisterStudentCommandHandler : IRequestHandler<RegisterStudentComm
 
         return new BaseResponse<RegisteredStudentResponse>
         {
-            StatusCode = HttpStatusCode.Created,
+            StatusCode = (int)HttpStatusCode.Created,
             Message = ReturnMessages.STUDENT_REGISTERED_SUCCESSFULLY,
             Data = new RegisteredStudentResponse
             {
