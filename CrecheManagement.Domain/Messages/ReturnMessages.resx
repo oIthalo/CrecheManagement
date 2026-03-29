@@ -294,4 +294,7 @@
   <data name="DASHBOARD_RETURNED_SUCCESSFULLY" xml:space="preserve">
     <value>Dashboard returned successfully.</value>
   </data>
+  <data name="CRECHE_RETURNED_SUCESSFULLY" xml:space="preserve">
+    <value>Creche returned successfully.</value>
+  </data>
 </root>

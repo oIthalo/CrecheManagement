@@ -20,7 +20,7 @@ public class CrechesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Read()
+    public async Task<IActionResult> GetAll()
     {
         var result = await _mediator.Send(new GetCrechesQuery());
         if (!result.Data.Any())
@@ -30,8 +30,16 @@ public class CrechesController : ControllerBase
     }
 
     [HttpGet]
+    [Route("{crecheIdentifier}")]
+    public async Task<IActionResult> GetOne([FromRoute] string crecheIdentifier)
+    {
+        var result = await _mediator.Send(new GetCrecheQuery { Identifier = crecheIdentifier });
+        return Ok(result);
+    }
+
+    [HttpGet]
     [Route("{crecheIdentifier}/dashboard")]
-    public async Task<IActionResult> ReadDashboard(string crecheIdentifier)
+    public async Task<IActionResult> GetDashboard(string crecheIdentifier)
     {
         var result = await _mediator.Send(new GetDashboardQuery { CrecheIdentifier = crecheIdentifier });
         return Ok(result);

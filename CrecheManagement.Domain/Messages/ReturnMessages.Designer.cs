@@ -313,6 +313,15 @@ namespace CrecheManagement.Domain.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creche returned successfully..
+        /// </summary>
+        public static string CRECHE_RETURNED_SUCESSFULLY {
+            get {
+                return ResourceManager.GetString("CRECHE_RETURNED_SUCESSFULLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creche updated successfully..
         /// </summary>
         public static string CRECHE_UPDATED_SUCCESSFULLY {
