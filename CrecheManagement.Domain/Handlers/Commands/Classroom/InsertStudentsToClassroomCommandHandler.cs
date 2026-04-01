@@ -29,14 +29,16 @@ public class InsertStudentsToClassroomCommandHandler : IRequestHandler<InsertStu
     public async Task<BaseResponse<List<ClassroomStudentsDto>>> Handle(InsertStudentsToClassroomCommand request, CancellationToken cancellationToken)
     {
         var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
-
         var classroom = await _classroomsRepository.GetByIdentifierAsync(request.ClassroomIdentifier!)
             ?? throw new CrecheManagementException(ReturnMessages.CLASSROOM_NOT_FOUND, HttpStatusCode.NotFound);
 
-        var existStudentsOnThisClassroom = ExistStudentsOnThisClassroom(classroom, request.StudentsIdentifiers!);
-        if (existStudentsOnThisClassroom.Exist)
+        if (creche.Identifier != classroom.CrecheIdentifier)
+            throw new CrecheManagementException(ReturnMessages.CLASSROOM_NOT_FOUND, HttpStatusCode.NotFound);
+
+        var (exist, existingStudents) = ExistStudentsOnThisClassroom(classroom, request.StudentsIdentifiers!);
+        if (exist)
         {
-            var studentsExisting = await _studentsRepository.GetStudentsAsync(existStudentsOnThisClassroom.ExistingStudents);
+            var studentsExisting = await _studentsRepository.GetStudentsAsync(existingStudents);
             var studentsExistingMessage = string.Join(Environment.NewLine, studentsExisting.Select(x => $"{x.Name} ({x.RegistrationId})"));
 
             var errorMessage = studentsExisting.Count == 1

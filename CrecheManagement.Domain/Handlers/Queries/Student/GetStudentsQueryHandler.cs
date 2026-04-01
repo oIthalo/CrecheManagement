@@ -34,8 +34,7 @@ public class GetStudentsQueryHandler : IRequestHandler<GetStudentsQuery, BaseRes
     {
         var creche = await _crecheAuthorizationService.AuthorizeAndGetCreche(request.CrecheIdentifier!);
 
-        var students = new List<Models.Student>();
-
+        List<Models.Student>? students;
         if (string.IsNullOrEmpty(request.ClassroomIdentifier))
         {
             students = await _studentsRepository.GetStudentsByCrecheAsync(creche.Identifier);
